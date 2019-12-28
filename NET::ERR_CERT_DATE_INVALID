@@ -1,0 +1,24 @@
+
+1. letsencrypt certonly --manual --preferred-challenges=dns --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d *.git.xxxxxx.com
+2. cp to /etc/gitlab/trusted-certs
+3. check ke 2 configurasi ini : 
+
+nginx['redirect_http_to_https'] = true
+nginx['redirect_http_to_https_port'] = 80
+
+
+4. unlink /etc/gitlab/trusted-certs/chain.pem & cert.pem
+   unlink all in /opt/gitlab/embedded/ssl/certs/
+
+5. rm /var/opt/gitlab/trusted-certs-directory-hash
+
+6. gitlab-ctl reconfigure
+
+If error do:
+
+7 vi /opt/gitlab/embedded/cookbooks/letsencrypt/resources/certificate.rb
+Delete Function di bawah
+
+  acme_certificate 'staging' do
+  [----]
+  end
