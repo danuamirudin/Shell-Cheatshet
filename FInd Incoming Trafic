@@ -4,5 +4,5 @@ netstat -tn 2>/dev/null | awk '{print $5 "   " $6}'
 
 Ref : https://www.mkyong.com/linux/list-all-ip-addresses-connected-to-your-server/
 
-Membuat Self Signed SSl
-Sudo letsencrypt certonly --manual -d *.[DOMAIN].com
+
+
